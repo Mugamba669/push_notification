@@ -7,15 +7,20 @@ import io.flutter.plugins.GeneratedPluginRegistrant;
 import io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin;
 import io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService;
 
-public class Application extends FlutterApplication implements PluginRegistrantCallback {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        FlutterFirebaseMessagingService.setPluginRegistrant(this);
-    }
+// ...
+import io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService;
 
-    @Override
-    public void registerWith(PluginRegistry registry) {
-        FirebaseMessagingPlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin"));
-    }
+public class Application extends FlutterApplication implements PluginRegistrantCallback {
+  // ...
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    FlutterFirebaseMessagingBackgroundService.setPluginRegistrant(this);
+  }
+
+  @Override
+  public void registerWith(PluginRegistry registry) {
+    GeneratedPluginRegistrant.registerWith(registry);
+  }
+  // ...5
 }

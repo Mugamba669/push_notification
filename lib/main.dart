@@ -24,10 +24,11 @@ void main() async {
     provisional: false,
     sound: true,
   );
+  await FirebaseMessaging.instance.setAutoInitEnabled(true);
   messaging.setForegroundNotificationPresentationOptions(
       sound: true, badge: true, alert: true);
   // subscribe to a topic
-  await FirebaseMessaging.instance.subscribeToTopic('weather');
+  await FirebaseMessaging.instance.subscribeToTopic('Sample Notification');
 
   debugPrint('User granted permission: ${settings.authorizationStatus}');
   runApp(MyApp());
